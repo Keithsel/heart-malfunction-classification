@@ -19,5 +19,3 @@ if st.button("Generate Pairplot", key="pairplot"):
     st.write("Generating pairplot...")
     pairplot = sns.pairplot(data=data[selected_columns])
     st.pyplot(pairplot)
-
-if st.button("")
