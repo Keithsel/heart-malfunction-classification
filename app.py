@@ -3,7 +3,7 @@ import os, sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 intro = st.Page('general/introduction.py', title='Introduction', icon=':material/home:', default=True)
-knowledge = st.Page('general/knowledge_and_research.py', title='Knowledge and Research', icon=':material/insights:')
+news = st.Page('general/news.py', title='News', icon=':material/full_coverage:')
 
 example_1 = st.Page('logistic_regression/example1.py', title='Prediction example', icon=':material/analytics:')
 example_2 = st.Page('logistic_regression/example2.py', title='Gradient Descent example', icon=':material/manufacturing:')
@@ -19,7 +19,7 @@ final_visu = st.Page('model/final_visualization.py', title='Final Visualization'
 
 pg = st.navigation(
     {
-        "General": [intro, knowledge],
+        "General": [intro, news],
         "Logistic Regression": [example_1, example_2],
         "Exploratory Data Analysis": [data_table, univariate, mulvar, correlation],
         "Model": [train, predict, final_visu]
