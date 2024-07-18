@@ -19,7 +19,7 @@ final_visu = st.Page('model/final_visualization.py', title='Final Visualization'
 
 pg = st.navigation(
     {
-        "General": [intro,],
+        "General": [intro, knowledge],
         "Logistic Regression": [example_1, example_2],
         "Exploratory Data Analysis": [data_table, univariate, mulvar, correlation],
         "Model": [train, predict, final_visu]
