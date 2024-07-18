@@ -13,7 +13,6 @@ univariate = st.Page('eda/univar_plot.py', title='Univariate Analysis', icon=':m
 mulvar = st.Page('eda/mulvar_plot.py', title='Multivariate Analysis', icon=':material/monitoring:')
 correlation = st.Page('eda/correlation.py', title='Correlation', icon=':material/stacked_line_chart:')
 
-train = st.Page('model/train.py', title='Train', icon=':material/rebase:')
 predict = st.Page('model/predict.py', title='Predict', icon=':material/pivot_table_chart:')
 final_visu = st.Page('model/final_visualization.py', title='Final Visualization', icon=':material/view_in_ar:')
 
@@ -22,7 +21,7 @@ pg = st.navigation(
         "General": [intro, news],
         "Logistic Regression": [example_1, example_2],
         "Exploratory Data Analysis": [data_table, univariate, mulvar, correlation],
-        "Model": [train, predict, final_visu]
+        "Model": [predict, final_visu]
     }
 )
 

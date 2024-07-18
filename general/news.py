@@ -1,8 +1,8 @@
 import streamlit as st
 from gnews import GNews
 import pandas as pd
-import requests
 from newspaper import Article
+import logging
 
 def fetch_full_article(url):
     article = Article(url)
@@ -19,10 +19,6 @@ google_news = GNews(language="en", country="US", period="7d", max_results=10)
 
 keyword = "heart health"
 
-google_news.language = 'english'
-
-google_news.country = 'United States'
-
 if st.button("Search News", use_container_width=True):
     with st.spinner("Fetching news..."):
         st.session_state.news = google_news.get_news(keyword)
@@ -35,16 +31,33 @@ if st.session_state.news:
         "published date": "Published Date",
         "publisher": "Publisher",
         "url": "URL",
-        "image": "Image"
     })
 
     # Display news
     st.subheader(f"Top News for '{keyword}'")
     for _, article in df.iterrows():
-        st.markdown(f"### [{article['Title']}]({article['URL']})")
-        st.write(f"**Publisher:** {article['Publisher']['title']}")
-        st.write(f"**Published Date:** {article['Published Date']}")
-        st.write(article['Description'])
+        article_url = article['URL']
+        full_article = fetch_full_article(article_url)
+        image_list = list(full_article.images)
+        logging.info(f"Image list: {image_list}")
+        
+        col1, col2 = st.columns([1, 4])
+        
+        # Display images
+        with col1:
+            if full_article.images:
+                image_url = list(full_article.images)[0]  # Display the first image
+                st.image(image_url, use_column_width=True)
+            else:
+                st.image("https://via.placeholder.com/150", use_column_width=True)
+        
+        # Display article details
+        with col2:
+            st.markdown(f"### [{article['Title']}]({article_url})")
+            st.write(f"**Publisher:** {article['Publisher']['title']}")
+            st.write(f"**Published Date:** {article['Published Date']}")
+            st.write(article['Description'])
+        
         st.markdown("---")
 
 elif st.session_state.news is not None:
