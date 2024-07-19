@@ -55,4 +55,8 @@ if st.button("Predict"):
         st.write("The patient is likely to have heart disease")
     else:
         st.write("The patient is not likely to have heart disease")
+    st.session_state.cp_test = "Typical angina"
+    st.session_state.oldpeak_test = 0.0
+    st.session_state.thalachh_test = 71
+
 
