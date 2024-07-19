@@ -11,11 +11,11 @@ st.write("The visualization for the train set")
 with open('model/plot1.html', 'r') as file:
     body1 = file.read()
 
-components.html(body1, height=600)
+components.html(body1, height=512)
 
 st.write("The visualization for the test set")
 
 with open('model/plot2.html', 'r') as file:
     body2 = file.read()
 
-components.html(body2, height=600)
+components.html(body2, height=512)

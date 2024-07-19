@@ -33,7 +33,6 @@ if st.session_state.news:
         "url": "URL",
     })
 
-    # Display news
     st.subheader(f"Top News for '{keyword}'")
     for _, article in df.iterrows():
         article_url = article['URL']
@@ -43,15 +42,13 @@ if st.session_state.news:
         
         col1, col2 = st.columns([1, 4])
         
-        # Display images
         with col1:
             if full_article.images:
-                image_url = list(full_article.images)[0]  # Display the first image
+                image_url = list(full_article.images)[0]
                 st.image(image_url, use_column_width=True)
             else:
                 st.image("https://via.placeholder.com/150", use_column_width=True)
         
-        # Display article details
         with col2:
             st.markdown(f"### [{article['Title']}]({article_url})")
             st.write(f"**Publisher:** {article['Publisher']['title']}")
